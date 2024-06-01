@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Cooperativas</title>
+</head>
+<body>
+    <h1>Cooperativas</h1>
+    <form action="/cooperativas" method="post">
+        <label>ID: <input type="text" name="id"></label><br>
+        <label>Nombre: <input type="text" name="nombre"></label><br>
+        <button type="submit">Agregar Cooperativa</button>
+    </form>
+    <ul>
+        <% cooperativas.forEach(cooperativa => { %>
+            <li><%= cooperativa.nombre %> (ID: <%= cooperativa.id %>)</li>
+        <% }) %>
+    </ul>
+</body>
+</html>

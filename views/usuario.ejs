@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    <form action="/usuarios" method="post">
+        <label>ID: <input type="text" name="id"></label><br>
+        <label>Nombre: <input type="text" name="nombre"></label><br>
+        <label>Cuenta de Ahorro: <input type="text" name="cuentaAhorro"></label><br>
+        <label>Cuenta de Préstamo: <input type="text" name="cuentaPrestamo"></label><br>
+        <button type="submit">Agregar Usuario</button>
+    </form>
+    <ul>
+        <% usuarios.forEach(usuario => { %>
+            <li><%= usuario.nombre %> (ID: <%= usuario.id %>)</li>
+        <% }) %>
+    </ul>
+</body>
+</html>
