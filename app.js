@@ -5,7 +5,7 @@ const logger = require('morgan');
 
 const indexRouter = require('../sistema-bancario-definitivo/routes/index');
 const usuariosRouter = require('../sistema-bancario-definitivo/routes/usuarioRoutes');
-const cooperativasRouter = require('./routes/cooperativaroutes');
+const cooperativasRouter = require('../sistema-bancario-definitivo/routes/cooperativaRoutes');
 
 const app = express();
 
