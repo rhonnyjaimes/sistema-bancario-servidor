@@ -1,7 +1,6 @@
 const storage = require('../data/storage');
 
 class AhorrosController {
-    // Método para agregar una cuenta de ahorro
     agregarCuentaAhorro(req, res) {
         const { id, saldo, usuarioId } = req.body;
         const nuevaCuenta = { id, saldo, usuarioId };
@@ -9,7 +8,6 @@ class AhorrosController {
         res.status(201).send({ mensaje: 'Cuenta de ahorro agregada exitosamente', cuenta: nuevaCuenta });
     }
 
-    // Método para editar una cuenta de ahorro
     editarCuentaAhorro(req, res) {
         const { id } = req.params;
         const { saldo, usuarioId } = req.body;
@@ -23,7 +21,6 @@ class AhorrosController {
         }
     }
 
-    // Método para eliminar una cuenta de ahorro
     eliminarCuentaAhorro(req, res) {
         const { id } = req.params;
         const index = storage.cuentasahorro.findIndex(c => c.id === id);
@@ -35,12 +32,10 @@ class AhorrosController {
         }
     }
 
-    // Método para listar todas las cuentas de ahorro
     listarCuentasAhorro(req, res) {
         res.send(storage.cuentasahorro);
     }
 
-    // Método para obtener los detalles de una cuenta de ahorro
     obtenerDetallesCuentaAhorro(req, res) {
         const { id } = req.params;
         const cuenta = storage.cuentasahorro.find(c => c.id === id);
