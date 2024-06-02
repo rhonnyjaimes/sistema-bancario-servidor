@@ -1,4 +1,6 @@
 module.exports = {
     usuarios: [],
-    cooperativas: []
+    cooperativas: [],
+    cuentasahorro:[],
+    cuentasprestamo:[]
 };
