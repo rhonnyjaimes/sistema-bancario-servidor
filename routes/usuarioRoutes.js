@@ -8,4 +8,7 @@ router.delete('/:id', usuarioController.eliminarUsuario.bind(usuarioController))
 router.get('/', usuarioController.listarUsuarios.bind(usuarioController));
 router.get('/:id', usuarioController.obtenerDetallesUsuario.bind(usuarioController));
 
+router.post('/:id/cuentas-ahorro', usuarioController.agregarCuentaAhorro.bind(usuarioController));
+router.post('/:id/cuentas-prestamo', usuarioController.agregarCuentaPrestamo.bind(usuarioController));
+
 module.exports = router;

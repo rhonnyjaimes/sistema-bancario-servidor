@@ -1,5 +1,6 @@
 const storage = require('../data/storage');
 
+
 class UsuarioController {
     agregarUsuario(req, res) {
         const { id, nombre, cuentaAhorro, cuentaPrestamo } = req.body;
@@ -11,6 +12,30 @@ class UsuarioController {
         };
         storage.usuarios.push(nuevoUsuario);
         res.status(201).send({ mensaje: 'Usuario agregado exitosamente', usuario: nuevoUsuario });
+    }
+
+    agregarCuentaAhorro(req, res) {
+        const { id } = req.params;
+        const { cuentaId, saldo, tasaInteres } = req.body;
+        const usuario = storage.usuarios.find(u => u.id === id);
+        if (usuario) {
+            usuario.cuentasAhorro.push({ id: cuentaId, saldo, tasaInteres });
+            res.send({ mensaje: 'Cuenta de ahorro agregada exitosamente', cuentasAhorro: usuario.cuentasAhorro });
+        } else {
+            res.status(404).send({ mensaje: 'Usuario no encontrado' });
+        }
+    }
+
+    agregarCuentaPrestamo(req, res) {
+        const { id } = req.params;
+        const { cuentaId, saldo, tasaInteres, fechaProximoPago } = req.body;
+        const usuario = storage.usuarios.find(u => u.id === id);
+        if (usuario) {
+            usuario.cuentasPrestamo.push({ id: cuentaId, saldo, tasaInteres, fechaProximoPago });
+            res.send({ mensaje: 'Cuenta de préstamo agregada exitosamente', cuentasPrestamo: usuario.cuentasPrestamo });
+        } else {
+            res.status(404).send({ mensaje: 'Usuario no encontrado' });
+        }
     }
 
     editarUsuario(req, res) {
