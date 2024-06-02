@@ -1,7 +1,6 @@
 const storage = require('../data/storage');
 
 class PrestamosController {
-    // Método para agregar una cuenta de préstamo
     agregarCuentaPrestamo(req, res) {
         const { id, saldoPendiente, tasaInteres, fechaProximoPago, usuarioId } = req.body;
         const nuevaCuenta = { id, saldoPendiente, tasaInteres, fechaProximoPago, usuarioId };
@@ -9,7 +8,6 @@ class PrestamosController {
         res.status(201).send({ mensaje: 'Cuenta de préstamo agregada exitosamente', cuenta: nuevaCuenta });
     }
 
-    // Método para editar una cuenta de préstamo
     editarCuentaPrestamo(req, res) {
         const { id } = req.params;
         const { saldoPendiente, tasaInteres, fechaProximoPago, usuarioId } = req.body;
@@ -25,7 +23,6 @@ class PrestamosController {
         }
     }
 
-    // Método para eliminar una cuenta de préstamo
     eliminarCuentaPrestamo(req, res) {
         const { id } = req.params;
         const index = storage.cuentasprestamo.findIndex(c => c.id === id);
@@ -37,12 +34,10 @@ class PrestamosController {
         }
     }
 
-    // Método para listar todas las cuentas de préstamo
     listarCuentasPrestamo(req, res) {
         res.send(storage.cuentasprestamo);
     }
 
-    // Método para obtener los detalles de una cuenta de préstamo
     obtenerDetallesCuentaPrestamo(req, res) {
         const { id } = req.params;
         const cuenta = storage.cuentasprestamo.find(c => c.id === id);
